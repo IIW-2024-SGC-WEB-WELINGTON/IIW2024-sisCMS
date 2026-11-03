@@ -1,4 +1,4 @@
-#Etapa 1 - Banco de Dados
+#Etapa 1 - Banco de Dados - Maria DB
 name: cms-sisCMS
 
 services:
@@ -22,7 +22,7 @@ wordpress:
   restart: unless-stopped
   ports:
     - "8080:80"
-  enviroment:
+  environment:
     WORDPRESS_DB_HOST: db
     WORDPRESS_DB_NAME: ${DB_NAME}
     WORDPRESS_DB_USER: ${DB_USER}
@@ -31,3 +31,20 @@ wordpress:
     - site-wordpress:/var/www/html
   depends_on:
     - db
+
+#Etapa 3 - Joomla
+
+joomla:
+  image: joomla:5-php8.3-apache
+  restart: unless-stopped
+  ports:
+    - "8080:80"
+  environment:
+      JOOMLA_DB_HOST:
+      JOOMLA_DB_NAME: ${DB_NAME}
+      JOOMLA_DB_USER: ${DB_USER}
+      JOOMLA_DB_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - site-joomla:/var/www/html
+    depends_on:
+      - db
