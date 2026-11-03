@@ -1,0 +1,16 @@
+#Etapa 1 - Banco de Dados
+name: cms-sisCMS
+
+services:
+  db:
+     image: mariadb:11
+     restart: unless-stopped
+     enviroment:
+       MariaDB_DATABASE: ${DB_NAME}
+       MARIADB_USER: ${DB_USER}
+       MARIADB_PASSWORD: {DB_PASSWORD}
+       MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+        - dados-do-banco:/var/lib/mysql
+    volumes:
+    dados-do-banco:
