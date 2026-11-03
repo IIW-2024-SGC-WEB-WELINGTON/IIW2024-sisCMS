@@ -32,6 +32,15 @@ wordpress:
   depends_on:
     - db
 
+
+WORDPRESS_CONFIG_EXTRA
+  if(isset($$_SERVER['HTTP_HOST'])) {
+    define('WP_HOME',  'https://' . $$_SERVER[HTTP_HOST']);
+    define('Wp_SITEURL', 'https://' . $$_SERVER['HTTP_HOST']);
+  }
+$$_SERVER['HTTPS'] = 'on';
+
+
 #Etapa 3 - Joomla
 
 joomla:
@@ -48,3 +57,11 @@ joomla:
       - site-joomla:/var/www/html
     depends_on:
       - db
+
+#Etapa 4 - Qual serviço levantar
+
+  volumes:
+  dados-do-banco:
+  site-wordpress: # ou site-joomla:
+
+WORDPRESS_CONFIG_EXTRA
