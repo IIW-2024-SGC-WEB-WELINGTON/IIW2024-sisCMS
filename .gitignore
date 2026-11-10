@@ -1,4 +1,4 @@
-# O .env guardará as senhas do banco. OO .env.example vai ao repositório para dar parâmetros ao levantar o container
+# O .env guardará as senhas do banco. O .env.example vai ao repositório para dar parâmetros ao levantar o container
 .env
 #Chaces e certificados
 *.pem
